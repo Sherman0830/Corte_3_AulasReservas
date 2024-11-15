@@ -9,27 +9,18 @@ public class Main {
         Estudiante estudiante = new Estudiante();
         Profesor profesor = new Profesor();
 
-
-        Aulas aulas = new Aulas();
-        Aulas aula1 = new Aulas("A", 203, "Multimedia", true);
-        Aulas aula2 = new Aulas("A", 304, "Multimedia", true);
-        Aulas aula3 = new Aulas("A", 501, "Radio", true);
-        Aulas aula4 = new Aulas("B", 202, "Sistemas", true);
-        Aulas aula5 = new Aulas("B", 205, "Sistemas", true);
-        Aulas aula6 = new Aulas("B", 402, "Laboratorio", true);
-
-        List<Aulas> lstaulas = new ArrayList<>();
-        lstaulas.add(aula1);
-        lstaulas.add(aula2);
-        lstaulas.add(aula3);
-        lstaulas.add(aula4);
-        lstaulas.add(aula5);
-        lstaulas.add(aula6);
+        List<Aulas> aulas = new ArrayList<>();
+        aulas.add(new Aulas("A", 203, "Multimedia", true));
+        aulas.add(new Aulas("A", 304, "Multimedia", true));
+        aulas.add(new Aulas("A", 501, "Radio", true));
+        aulas.add(new Aulas("B", 202, "Sistemas", true));
+        aulas.add(new Aulas("B", 205, "Sistemas", true));
+        aulas.add(new Aulas("B", 402, "Laboratorio", true));
 
         String nombreE, apellidoE, correoE, nombreP, apellidoP, correoP;
         int opc, cedulaE, IDE, cedulaP, IDP;
-        String torreER;
-        int cedulaER, salonER;
+        String torre;
+        int cedula, salon;
 
 
         do {
@@ -81,21 +72,29 @@ public class Main {
 
 
                 case 3:
-                    System.out.println(lstaulas.toString());
+                    for (Aulas aula : aulas) {
+                        System.out.println(aula);
+                    }
                     break;
 
                 case 4:
                     System.out.println("\nReserva de Aula\n");
                     System.out.println("Ingrese su cedula");
-                    cedulaER = teclado.nextInt();
+                    cedula = teclado.nextInt();
                     System.out.println("Ingrese torre del aula");
-                    torreER = teclado.next();
+                    torre = teclado.next();
                     System.out.println("Ingrese salon del aula");
-                    salonER = teclado.nextInt();
-                    aulas.reservarAulasE(torreER, salonER, cedulaER);
+                    salon = teclado.nextInt();
+
                     break;
 
                 case 5:
+                    System.out.print("Ingrese su cédula: ");
+                    cedula = teclado.nextInt();
+                    System.out.print("Ingrese la torre del aula: ");
+                    torre = teclado.next();
+                    System.out.print("Ingrese el salón del aula: ");
+                    salon = teclado.nextInt();
 
                     break;
 
@@ -120,3 +119,21 @@ public class Main {
 
     }
 }
+
+/*public void reservarAulasE(String torre, int salon, int cedula){
+    if (estudiante.registroE.containsKey(cedula)) {
+        if (this.torre != null || this.torre.equals(torre) && this.salon == salon) {
+            if(disponibilidad) {
+                this.disponibilidad = false;
+                System.out.println("Aula " + torre + " " + salon + " reservada exitosamente");
+            }
+            else{
+                System.out.println("Aula " + torre + " " + salon + " no se encuentra disponible");
+            }
+        } else {
+            System.out.println("La información del aula es incorrecta.");
+        }
+    } else {
+        System.out.println("El estudiante con cédula " + cedula + " no se encuentra registrado, debe tener un usuario para reservar el aula.");
+    }
+}*/

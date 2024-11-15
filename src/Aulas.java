@@ -50,26 +50,6 @@ public class Aulas {
         this.disponibilidad = disponibilidad;
     }
 
-    public void reservarAulasE(String torre, int salon, int cedula){
-        if (estudiante.registroE.containsKey(cedula)) {
-            if (this.torre != null  this.torre.equals(torre) && this.salon == salon) {
-                if(disponibilidad) {
-                    this.disponibilidad = false;
-                    System.out.println("Aula " + torre + " " + salon + " reservada exitosamente");
-                }
-            else{
-                    System.out.println("Aula " + torre + " " + salon + " no se encuentra disponible");
-                }
-            } else {
-                System.out.println("La información del aula es incorrecta.");
-            }
-        } else {
-            System.out.println("El estudiante con cédula " + cedula + " no se encuentra registrado, debe tener un usuario para reservar el aula.");
-        }
-    }
-
-
-
     public String toString(){
         return "Torre: " + torre +
                 "\nSalon: " + salon +

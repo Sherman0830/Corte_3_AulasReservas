@@ -1,34 +1,26 @@
-public class Reserva{
+public class Reserva {
+    private UsuarioM usuarioM;
+    private Aulas aula;
+    private boolean estado;
 
-    Estudiante reservante;
-    Aulas aulaReserva;
-
-    public Reserva(Estudiante reservante, Aulas aulaReserva) {
-        this.reservante = reservante;
-        this.aulaReserva = aulaReserva;
+    public Reserva(UsuarioM usuarioM, Aulas aula) {
+        this.usuarioM = usuarioM;
+        this.aula = aula;
+        this.estado = true; // Inicialmente la reserva está pendiente
     }
 
-    public Reserva() {
+    public void realizarReserva() {
+        if (aula.getDisponibilidad()) {
+            aula.setDisponibilidad(false);
+            System.out.println("Reserva realizada exitosamente.");
+        } else {
+            System.out.println("Lo sentimos, el aula no está disponible.");
+        }
     }
 
-    public Estudiante getReservante() {
-        return reservante;
+    public void entregarAula() {
+        aula.setDisponibilidad(true);
+        estado = false;
+        System.out.println("Aula entregada correctamente.");
     }
-
-    public void setReservante(Estudiante reservante) {
-        this.reservante = reservante;
-    }
-
-    public Aulas getAulaReserva() {
-        return aulaReserva;
-    }
-
-    public void setAulaReserva(Aulas aulaReserva) {
-        this.aulaReserva = aulaReserva;
-    }
-
-    /*public void hacerReserva(Estudiante estudiante, Aulas aulaReserva){
-    Aulas aulas = new Aulas();
-    aulas.aula1.setDisponibilidad(false);
-    }*/
 }

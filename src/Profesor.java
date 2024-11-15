@@ -1,14 +1,8 @@
 import java.util.HashMap;
 
-public class Profesor implements Usuario{
+public class Profesor extends UsuarioA implements UsuarioM {
 
     HashMap<Integer, Profesor> registroP = new HashMap<>();
-
-    String nombre;
-    String apellido;
-    int ID;
-    String correo;
-    int cedula;
 
     public Profesor(String nombre, String apellido, int ID, String correo, int cedula) {
         this.nombre = nombre;

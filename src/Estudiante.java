@@ -1,14 +1,8 @@
 import java.util.HashMap;
 
-public class Estudiante implements Usuario{
+public class Estudiante extends UsuarioA implements UsuarioM{
 
     static HashMap<Integer, Estudiante> registroE = new HashMap<>();
-
-    String nombre;
-    String apellido;
-    int ID;
-    String correo;
-    int cedula;
 
     public Estudiante(String nombre, String apellido, int ID, String correo, int cedula) {
         this.nombre = nombre;
@@ -19,8 +13,6 @@ public class Estudiante implements Usuario{
     }
 
     public Estudiante() {
-        Estudiante estudiante1 = new Estudiante("Andres", "Cardenas", 935186, "andres.cardenas-m@uniminuto.edu.co", 1003824769);
-        registroE.put(cedula, estudiante1);
     }
 
     public String getNombre() {
