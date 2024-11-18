@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        //
+        //LINK: https://lucid.app/lucidchart/97013170-f3a8-417a-974e-a6695c2fbe4a/edit?viewport_loc=-226%2C340%2C2220%2C938%2C0_0&invitationId=inv_f1b5cdb0-f506-4804-a07f-f6e284fc767ftus
+
         Scanner teclado = new Scanner(System.in);
         Estudiante estudiante = new Estudiante();
         Profesor profesor = new Profesor();
