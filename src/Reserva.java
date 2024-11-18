@@ -1,26 +1,25 @@
 public class Reserva {
-    private UsuarioM usuarioM;
+    private int cedulaUsuario;
     private Aulas aula;
-    private boolean estado;
 
-    public Reserva(UsuarioM usuarioM, Aulas aula) {
-        this.usuarioM = usuarioM;
+    public Reserva(int cedulaUsuario, Aulas aula) {
+        this.cedulaUsuario = cedulaUsuario;
         this.aula = aula;
-        this.estado = true; // Inicialmente la reserva está pendiente
+        aula.setDisponibilidad(false);  // Al crear la reserva, el aula deja de estar disponible
     }
 
-    public void realizarReserva() {
-        if (aula.getDisponibilidad()) {
-            aula.setDisponibilidad(false);
-            System.out.println("Reserva realizada exitosamente.");
-        } else {
-            System.out.println("Lo sentimos, el aula no está disponible.");
-        }
+    public int getCedulaUsuario() {
+        return cedulaUsuario;
     }
 
-    public void entregarAula() {
-        aula.setDisponibilidad(true);
-        estado = false;
-        System.out.println("Aula entregada correctamente.");
+    public Aulas getAula() {
+        return aula;
+    }
+
+    @Override
+    public String toString() {
+        return "Reserva - Usuario: " + cedulaUsuario +
+                "\nAula: Torre " + aula.getTorre() +
+                ", Salon " + aula.getSalon();
     }
 }

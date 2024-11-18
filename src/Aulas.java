@@ -4,8 +4,6 @@ public class Aulas {
     int salon;
     String tipo;
     boolean disponibilidad;
-    Estudiante estudiante = new Estudiante();
-
 
     public Aulas(String torre, int salon, String tipo, boolean disponibilidad) {
         this.torre = torre;

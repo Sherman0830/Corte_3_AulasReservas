@@ -17,6 +17,8 @@ public class Main {
         aulas.add(new Aulas("B", 205, "Sistemas", true));
         aulas.add(new Aulas("B", 402, "Laboratorio", true));
 
+        List<Reserva> reservas = new ArrayList<>();
+
         String nombreE, apellidoE, correoE, nombreP, apellidoP, correoP;
         int opc, cedulaE, IDE, cedulaP, IDP;
         String torre;
@@ -86,15 +88,55 @@ public class Main {
                     System.out.println("Ingrese salon del aula");
                     salon = teclado.nextInt();
 
+                    Aulas aulaReservar = null;
+                    for (Aulas aula : aulas) {
+                        if (aula.getTorre().equalsIgnoreCase(torre) && aula.getSalon() == salon) {
+                            aulaReservar = aula;
+                            break;
+                        }
+                    }
+
+                    if (aulaReservar != null) {
+                        if (aulaReservar.getDisponibilidad()) {
+                            Reserva nuevaReserva = new Reserva(cedula, aulaReservar);
+                            reservas.add(nuevaReserva);
+                            aulaReservar.setDisponibilidad(false);
+                            System.out.println("Reserva realizada con éxito.");
+                        } else {
+                            System.out.println("El aula no está disponible.");
+                        }
+                    } else {
+                        System.out.println("Aula no encontrada.");
+                    }
+
                     break;
 
                 case 5:
-                    System.out.print("Ingrese su cédula: ");
+                    System.out.println("\nEntrega de Aula\n");
+                    System.out.print("Ingrese su cédula:");
                     cedula = teclado.nextInt();
-                    System.out.print("Ingrese la torre del aula: ");
+                    System.out.print("Ingrese la torre del aula");
                     torre = teclado.next();
-                    System.out.print("Ingrese el salón del aula: ");
+                    System.out.print("Ingrese el salón del aula");
                     salon = teclado.nextInt();
+
+                    boolean reservaEncontrada = false;
+                    for (Reserva reserva : reservas) {
+                        if (reserva.getCedulaUsuario() == cedula &&
+                                reserva.getAula().getTorre().equalsIgnoreCase(torre) &&
+                                reserva.getAula().getSalon() == salon) {
+                            reserva.getAula().setDisponibilidad(true);
+                            reservas.remove(reserva);
+                            System.out.println("Aula entregada con éxito.");
+                            reservaEncontrada = true;
+                            break;
+                        }
+                    }
+
+                    if (!reservaEncontrada) {
+                        System.out.println("No se encontró una reserva para este usuario y aula.");
+                    }
+
 
                     break;
 
@@ -119,21 +161,3 @@ public class Main {
 
     }
 }
-
-/*public void reservarAulasE(String torre, int salon, int cedula){
-    if (estudiante.registroE.containsKey(cedula)) {
-        if (this.torre != null || this.torre.equals(torre) && this.salon == salon) {
-            if(disponibilidad) {
-                this.disponibilidad = false;
-                System.out.println("Aula " + torre + " " + salon + " reservada exitosamente");
-            }
-            else{
-                System.out.println("Aula " + torre + " " + salon + " no se encuentra disponible");
-            }
-        } else {
-            System.out.println("La información del aula es incorrecta.");
-        }
-    } else {
-        System.out.println("El estudiante con cédula " + cedula + " no se encuentra registrado, debe tener un usuario para reservar el aula.");
-    }
-}*/

@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class Profesor extends UsuarioA implements UsuarioM {
 
-    HashMap<Integer, Profesor> registroP = new HashMap<>();
+    static HashMap<Integer, Profesor> registroP = new HashMap<>();
 
     public Profesor(String nombre, String apellido, int ID, String correo, int cedula) {
         this.nombre = nombre;
